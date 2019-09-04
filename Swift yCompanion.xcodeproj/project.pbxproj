@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9007BFB265790FC33CD0BD33 /* Pods_Swift_yCompanion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A2E4AB63FB34BCCE146DC6 /* Pods_Swift_yCompanion.framework */; };
+		9A85F3E4231FD830005F2492 /* StudentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A85F3E3231FD830005F2492 /* StudentInfoView.swift */; };
 		9A98BE75231D22F4007E1CE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A98BE74231D22F4007E1CE7 /* AppDelegate.swift */; };
 		9A98BE77231D22F4007E1CE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A98BE76231D22F4007E1CE7 /* ViewController.swift */; };
 		9A98BE7A231D22F4007E1CE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A98BE78231D22F4007E1CE7 /* Main.storyboard */; };
 		9A98BE7C231D22F6007E1CE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A98BE7B231D22F6007E1CE7 /* Assets.xcassets */; };
 		9A98BE7F231D22F6007E1CE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A98BE7D231D22F6007E1CE7 /* LaunchScreen.storyboard */; };
+		9A98BE87231D25FA007E1CE7 /* DataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A98BE86231D25FA007E1CE7 /* DataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		451F32948880DEB2D74B0F10 /* Pods-Swift yCompanion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift yCompanion.release.xcconfig"; path = "Target Support Files/Pods-Swift yCompanion/Pods-Swift yCompanion.release.xcconfig"; sourceTree = "<group>"; };
+		70A2E4AB63FB34BCCE146DC6 /* Pods_Swift_yCompanion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swift_yCompanion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A85F3E3231FD830005F2492 /* StudentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StudentInfoView.swift; path = ../StudentInfoView.swift; sourceTree = "<group>"; };
 		9A98BE71231D22F4007E1CE7 /* Swift yCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift yCompanion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A98BE74231D22F4007E1CE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A98BE76231D22F4007E1CE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +28,8 @@
 		9A98BE7B231D22F6007E1CE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A98BE7E231D22F6007E1CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A98BE80231D22F6007E1CE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A98BE86231D25FA007E1CE7 /* DataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClass.swift; sourceTree = "<group>"; };
+		C953EF14A755A56BD11D0696 /* Pods-Swift yCompanion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift yCompanion.debug.xcconfig"; path = "Target Support Files/Pods-Swift yCompanion/Pods-Swift yCompanion.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9007BFB265790FC33CD0BD33 /* Pods_Swift_yCompanion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		623AF689F2571D076751BCDF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C953EF14A755A56BD11D0696 /* Pods-Swift yCompanion.debug.xcconfig */,
+				451F32948880DEB2D74B0F10 /* Pods-Swift yCompanion.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		9A98BE68231D22F4007E1CE7 = {
 			isa = PBXGroup;
 			children = (
 				9A98BE73231D22F4007E1CE7 /* Swift yCompanion */,
 				9A98BE72231D22F4007E1CE7 /* Products */,
+				623AF689F2571D076751BCDF /* Pods */,
+				9FECB06BBE8F7CA8D8EC01D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +74,24 @@
 		9A98BE73231D22F4007E1CE7 /* Swift yCompanion */ = {
 			isa = PBXGroup;
 			children = (
+				9A85F3E3231FD830005F2492 /* StudentInfoView.swift */,
 				9A98BE74231D22F4007E1CE7 /* AppDelegate.swift */,
 				9A98BE76231D22F4007E1CE7 /* ViewController.swift */,
+				9A98BE86231D25FA007E1CE7 /* DataClass.swift */,
 				9A98BE78231D22F4007E1CE7 /* Main.storyboard */,
 				9A98BE7B231D22F6007E1CE7 /* Assets.xcassets */,
 				9A98BE7D231D22F6007E1CE7 /* LaunchScreen.storyboard */,
 				9A98BE80231D22F6007E1CE7 /* Info.plist */,
 			);
 			path = "Swift yCompanion";
+			sourceTree = "<group>";
+		};
+		9FECB06BBE8F7CA8D8EC01D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70A2E4AB63FB34BCCE146DC6 /* Pods_Swift_yCompanion.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +101,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A98BE83231D22F6007E1CE7 /* Build configuration list for PBXNativeTarget "Swift yCompanion" */;
 			buildPhases = (
+				A8A5269A2AAA6DC19CF63881 /* [CP] Check Pods Manifest.lock */,
 				9A98BE6D231D22F4007E1CE7 /* Sources */,
 				9A98BE6E231D22F4007E1CE7 /* Frameworks */,
 				9A98BE6F231D22F4007E1CE7 /* Resources */,
+				74EDBB27E501357BAF95EBFF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,12 +162,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		74EDBB27E501357BAF95EBFF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Swift yCompanion/Pods-Swift yCompanion-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Swift yCompanion/Pods-Swift yCompanion-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8A5269A2AAA6DC19CF63881 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Swift yCompanion-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9A98BE6D231D22F4007E1CE7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A98BE87231D25FA007E1CE7 /* DataClass.swift in Sources */,
 				9A98BE77231D22F4007E1CE7 /* ViewController.swift in Sources */,
+				9A85F3E4231FD830005F2492 /* StudentInfoView.swift in Sources */,
 				9A98BE75231D22F4007E1CE7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,16 +365,20 @@
 		};
 		9A98BE84231D22F6007E1CE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C953EF14A755A56BD11D0696 /* Pods-Swift yCompanion.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Swift yCompanion/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Alex-Fedorenko.Swift-yCompanion";
+				PRODUCT_BUNDLE_IDENTIFIER = afedoren.SwiftyCompanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -297,16 +386,20 @@
 		};
 		9A98BE85231D22F6007E1CE7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 451F32948880DEB2D74B0F10 /* Pods-Swift yCompanion.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Swift yCompanion/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Alex-Fedorenko.Swift-yCompanion";
+				PRODUCT_BUNDLE_IDENTIFIER = afedoren.SwiftyCompanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
