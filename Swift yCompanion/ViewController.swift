@@ -2,7 +2,12 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+protocol ButtonPressed {
+    
+}
+
 class ViewController: UIViewController {
+    
     
     var token = "" 
     
@@ -26,12 +31,15 @@ class ViewController: UIViewController {
        
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        searhButton.isEnabled = true
+    }
     
     @IBAction func searchButton(_ sender: UIButton) {
         print("!!!!!!!!!!!!buttonPressed!!!!!!!!!!!!!!!!!!!!!!!!")
+        searhButton.isEnabled = false
         getStudentData()
-//        searhButton.layer.
+        
        
     }
     
