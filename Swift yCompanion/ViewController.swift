@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         print("!!!!!!!!!!!!buttonPressed!!!!!!!!!!!!!!!!!!!!!!!!")
         searhButton.isEnabled = false
         getStudentData()
-        
+     
        
     }
     
@@ -54,18 +54,56 @@ class ViewController: UIViewController {
         Alamofire.request(urlSearch + "users/" + textField.text!, method: .get, parameters: param).responseJSON { (response) in
             if response.result.isSuccess {
                 let userJson = JSON(response.result.value!)
+                print(userJson)
                 self.parseData(userJson: userJson)
-                self.performSegue(withIdentifier: "studentInfoView", sender: nil)
-                print("!!!!!!!!!!!!!!!!!!!UserData!!!!!!!!!!!!!!!!!")
+               
+             
             }
         }
     }
     
     func parseData(userJson: JSON){
-        //print("\(userJson)")
         personData.image_url = userJson["image_url"].stringValue
-        print(personData.image_url)
+//        print(personData.image_url)
+        if let user_id = userJson["id"].int{
+            parseCoalition(user_id: user_id)
+        }
+        if let name = userJson["displayname"].string{
+            personData.name = name
+        }
+        if let email = userJson["email"].string{
+            personData.email = email
+        }
+        if let login = userJson["login"].string{
+            personData.login = login
+        }
+        
+    
     }
+    
+    func parseCoalition(user_id: Int){
+        let param: Parameters = ["access_token": token]
+        Alamofire.request(urlSearch + "users/" + "\(user_id)" + "/coalitions" , method: .get, parameters: param).responseJSON { (response) in
+            if response.result.isSuccess{
+                let coalitionData = JSON(response.result.value!)
+                print(coalitionData)
+                self.personData.backgroundColour = coalitionData[0]["cover_url"].stringValue
+                self.personData.textColor = coalitionData[0]["color"].stringValue
+                 self.performSegue(withIdentifier: "studentInfoView", sender: nil)
+            }
+            else{
+                
+                print("ERRRRRRRROOOOOOOOOOORRRRRRRRRRR")
+            }
+
+        }
+        
+        
+        
+        
+        
+    }
+    
     func getToken() {
         let param: Parameters = ["grant_type": "client_credentials", "client_id": UID, "client_secret": victoriasSecret]
         Alamofire.request(urlToken, method: .post, parameters: param).responseJSON { (response) in
