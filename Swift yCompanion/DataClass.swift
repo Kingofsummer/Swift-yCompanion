@@ -10,7 +10,7 @@ import Foundation
 
 
 import Foundation
-
+import SwiftyJSON
 
 class PersonData {
     
@@ -21,4 +21,7 @@ class PersonData {
     var textColor: String = ""
     var login: String = ""
     var email: String = ""
+    var skills: [JSON]  = []
+    var level: Double = 0.0
+
 }

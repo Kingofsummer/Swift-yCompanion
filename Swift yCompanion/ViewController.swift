@@ -1,6 +1,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SVProgressHUD
 
 protocol ButtonPressed {
     
@@ -54,7 +55,7 @@ class ViewController: UIViewController {
         Alamofire.request(urlSearch + "users/" + textField.text!, method: .get, parameters: param).responseJSON { (response) in
             if response.result.isSuccess {
                 let userJson = JSON(response.result.value!)
-                print(userJson)
+//                print(userJson)
                 self.parseData(userJson: userJson)
                
              
@@ -77,7 +78,11 @@ class ViewController: UIViewController {
         if let login = userJson["login"].string{
             personData.login = login
         }
-        
+        if let level = userJson["cursus_users"][0]["level"].double{
+            print(level)
+            personData.level = level
+            print(personData.level)
+        }
     
     }
     
@@ -86,7 +91,7 @@ class ViewController: UIViewController {
         Alamofire.request(urlSearch + "users/" + "\(user_id)" + "/coalitions" , method: .get, parameters: param).responseJSON { (response) in
             if response.result.isSuccess{
                 let coalitionData = JSON(response.result.value!)
-                print(coalitionData)
+//                print(coalitionData)
                 self.personData.backgroundColour = coalitionData[0]["cover_url"].stringValue
                 self.personData.textColor = coalitionData[0]["color"].stringValue
                  self.performSegue(withIdentifier: "studentInfoView", sender: nil)
