@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         Alamofire.request(urlSearch + "users/" + textField.text!, method: .get, parameters: param).responseJSON { (response) in
             if response.result.isSuccess {
                 let userJson = JSON(response.result.value!)
-                print(userJson)
+//                print(userJson)
                 self.parseData(userJson: userJson)
                
              
@@ -99,6 +99,9 @@ class ViewController: UIViewController {
         }
         if let campus = userJson["campus"][0]["city"].string{
             personData.campus = campus
+        }
+        if let skills = userJson["cursus_users"][0]["skills"].array{
+            personData.skills = skills
         }
         
     }
