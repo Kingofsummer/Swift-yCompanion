@@ -103,6 +103,9 @@ class ViewController: UIViewController {
         if let skills = userJson["cursus_users"][0]["skills"].array{
             personData.skills = skills
         }
+        if let projects = userJson["projects_users"].array{
+            personData.projects = projects
+        }
         
     }
     

@@ -29,5 +29,6 @@ class PersonData {
     var locationAvail: String = ""
     var locationUnaval: String = ""
     var check: Int = 0
-    var campus: String = "" 
+    var campus: String = ""
+    var projects: [JSON] = []
 }
