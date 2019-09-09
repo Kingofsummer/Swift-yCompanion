@@ -23,5 +23,8 @@ class PersonData {
     var email: String = ""
     var skills: [JSON]  = []
     var level: Double = 0.0
-
+    var wallet: Int = 0
+    var points: Int = 0
+    var grade: String = ""
+    
 }

@@ -79,10 +79,18 @@ class ViewController: UIViewController {
             personData.login = login
         }
         if let level = userJson["cursus_users"][0]["level"].double{
-            print(level)
             personData.level = level
-            print(personData.level)
         }
+        if let wallet = userJson["wallet"].int{
+            personData.wallet = wallet
+        }
+        if let points = userJson["correction_point"].int{
+            personData.points = points
+        }
+        if let grade = userJson["cursus_users"][0]["grade"].string{
+            personData.grade = grade
+        }
+        
     
     }
     
@@ -91,7 +99,7 @@ class ViewController: UIViewController {
         Alamofire.request(urlSearch + "users/" + "\(user_id)" + "/coalitions" , method: .get, parameters: param).responseJSON { (response) in
             if response.result.isSuccess{
                 let coalitionData = JSON(response.result.value!)
-//                print(coalitionData)
+                print(coalitionData)
                 self.personData.backgroundColour = coalitionData[0]["cover_url"].stringValue
                 self.personData.textColor = coalitionData[0]["color"].stringValue
                  self.performSegue(withIdentifier: "studentInfoView", sender: nil)
