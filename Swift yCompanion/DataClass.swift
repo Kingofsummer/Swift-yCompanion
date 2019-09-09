@@ -26,5 +26,8 @@ class PersonData {
     var wallet: Int = 0
     var points: Int = 0
     var grade: String = ""
-    
+    var locationAvail: String = ""
+    var locationUnaval: String = ""
+    var check: Int = 0
+    var campus: String = "" 
 }

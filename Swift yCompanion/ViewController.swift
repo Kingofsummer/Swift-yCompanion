@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         Alamofire.request(urlSearch + "users/" + textField.text!, method: .get, parameters: param).responseJSON { (response) in
             if response.result.isSuccess {
                 let userJson = JSON(response.result.value!)
-//                print(userJson)
+                print(userJson)
                 self.parseData(userJson: userJson)
                
              
@@ -90,8 +90,17 @@ class ViewController: UIViewController {
         if let grade = userJson["cursus_users"][0]["grade"].string{
             personData.grade = grade
         }
+        if let locations = userJson["location"].string{
+            personData.locationAvail = "Available \(locations)"
+        }
+        else{
+            personData.locationUnaval = "Unvailable"
+            personData.check = 1
+        }
+        if let campus = userJson["campus"][0]["city"].string{
+            personData.campus = campus
+        }
         
-    
     }
     
     func parseCoalition(user_id: Int){
@@ -99,7 +108,7 @@ class ViewController: UIViewController {
         Alamofire.request(urlSearch + "users/" + "\(user_id)" + "/coalitions" , method: .get, parameters: param).responseJSON { (response) in
             if response.result.isSuccess{
                 let coalitionData = JSON(response.result.value!)
-                print(coalitionData)
+//                print(coalitionData)
                 self.personData.backgroundColour = coalitionData[0]["cover_url"].stringValue
                 self.personData.textColor = coalitionData[0]["color"].stringValue
                  self.performSegue(withIdentifier: "studentInfoView", sender: nil)

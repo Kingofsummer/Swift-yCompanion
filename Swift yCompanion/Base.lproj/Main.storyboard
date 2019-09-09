@@ -183,6 +183,13 @@
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.11774773149999999" green="0.1214248762" blue="0.13333645459999999" alpha="0.61906035960000005" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="locations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZQ-BM-sVt">
+                                                        <rect key="frame" x="4" y="84" width="355" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.11774773149999999" green="0.1214248762" blue="0.13333645459999999" alpha="0.61906035960000005" colorSpace="custom" customColorSpace="displayP3"/>
                                             </view>
@@ -255,10 +262,14 @@
                     <size key="freeformSize" width="375" height="1500"/>
                     <connections>
                         <outlet property="backgroundColour" destination="V98-jZ-E1r" id="lJM-Fh-0Qv"/>
-                        <outlet property="email" destination="Hd5-DC-z8z" id="z5E-zq-AQP"/>
+                        <outlet property="campus" destination="vKV-hp-aBC" id="4fL-Lx-0yQ"/>
+                        <outlet property="email" destination="Hd5-DC-z8z" id="VJw-WX-yZt"/>
+                        <outlet property="evaluationPoints" destination="xKB-Yg-RxP" id="62e-0N-PdQ"/>
                         <outlet property="g" destination="Xyd-l1-QdC" id="3Zq-DS-aKu"/>
+                        <outlet property="grade" destination="k5c-Ob-qBk" id="9yF-Ig-JlW"/>
                         <outlet property="level" destination="I0n-uy-Yd4" id="bhS-cr-7Hd"/>
                         <outlet property="levelLabel" destination="r7E-AT-58N" id="b0d-jt-355"/>
+                        <outlet property="locations" destination="WZQ-BM-sVt" id="f9Y-np-9v7"/>
                         <outlet property="login" destination="TXI-39-OIs" id="114-1Y-4Ih"/>
                         <outlet property="p" destination="atT-qx-lBl" id="E4f-SJ-0R0"/>
                         <outlet property="progressLevel" destination="6N6-Yd-VAg" id="YeY-Sv-XOR"/>
@@ -267,6 +278,7 @@
                         <outlet property="studentPhoto" destination="4cX-y9-zqV" id="xWv-X7-b5K"/>
                         <outlet property="url" destination="p3D-GG-2kA" id="Hwa-45-E1i"/>
                         <outlet property="w" destination="rh5-tw-pSn" id="MhH-WO-Kav"/>
+                        <outlet property="wallet" destination="fYS-qS-qx7" id="79e-4f-0rt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgD-gV-WbW" userLabel="First Responder" sceneMemberID="firstResponder"/>
