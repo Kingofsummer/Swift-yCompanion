@@ -77,7 +77,7 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
         }
         else if tableView == piscineTableView{
             returnValue = piscineDays.count
-            print(piscineDays.count)
+           
         }
         return returnValue
     }
@@ -96,11 +96,15 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
             return cell
         }
         else if tableView == projectTableView{
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "projectCell",  for: indexPath) as! ProjectCell
             cell.nameProject.textColor = hexStringToUIColor(hexString: "#009999")
             
-            cell.nameProject.text = unitProjects[indexPath.row]["project"]["name"].stringValue
+           
+            cell.nameProject.text = unitProjects[indexPath.row]["project"]["name"].string
+            
             if let finalmrk = unitProjects[indexPath.row]["final_mark"].int{
+                print("\(unitProjects[indexPath.row]["project"]["name"].stringValue) -- \(unitProjects[indexPath.row]["final_mark"]).int")
                 if finalmrk >= 60{
                     cell.finalMark.textColor = hexStringToUIColor(hexString: "#009929")
                     cell.finalMark.text = "👍" + String(finalmrk)
@@ -111,16 +115,18 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
                 }
             }
             else{
-                if unitProjects[indexPath.row]["status"].stringValue == "in_progress"{
+//                if unitProjects[indexPath.row]["status"].stringValue == "in_progress" || unitProjects[indexPath.row]["status"].stringValue == "searching_a_group"{
+                    cell.nameProject.text = unitProjects[indexPath.row]["project"]["name"].string
                     cell.finalMark.text = "🕐"
-                }
+//                }
             }
             return cell
         }
         else if tableView == piscineTableView{
             let cell = tableView.dequeueReusableCell(withIdentifier: "piscineCell", for: indexPath) as! PiscineCell
             cell.nameDay.textColor = hexStringToUIColor(hexString: "#009999")
-            cell.nameDay.text = piscineDays[indexPath.row]["project"]["slug"].stringValue
+            cell.nameDay.text = piscineDays[indexPath.row]["project"]["slug"].string
+            print()
             if let mrkDay = piscineDays[indexPath.row]["final_mark"].int{
                 if mrkDay >= 27{
                     cell.markDay.textColor = hexStringToUIColor(hexString: "#009929")
@@ -160,6 +166,9 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
     }
     
     func fetchProjectData(){
+        unitProjects.removeAll()
+        piscineDays.removeAll()
+        
         for item in personData.projects{
             var nameProject: String = ""
             if item["cursus_ids"][0] == 1{
@@ -170,6 +179,7 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
                 nameProject = item["project"].stringValue
                 piscineDays.append(item)
             }
+            print(unitProjects)
         }
     }
     
