@@ -44,6 +44,7 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
     
     @IBOutlet weak var skillTableView: UITableView!
     @IBOutlet weak var projectTableView: UITableView!
+    @IBOutlet weak var piscineTableView: UITableView!
     
     
     var text: String = ""
@@ -54,7 +55,7 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
     var nameSkillArr = [String]()
     var levelSkillArr = [String]()
     
-    var piscineDay: [JSON] = []
+    var piscineDays: [JSON] = []
     var unitProjects: [JSON] = []
    
     
@@ -72,7 +73,11 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
         }
         else if tableView == projectTableView{
             returnValue = unitProjects.count
-           print(unitProjects)
+
+        }
+        else if tableView == piscineTableView{
+            returnValue = piscineDays.count
+            print(piscineDays.count)
         }
         return returnValue
     }
@@ -95,7 +100,6 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
             cell.nameProject.textColor = hexStringToUIColor(hexString: "#009999")
             
             cell.nameProject.text = unitProjects[indexPath.row]["project"]["name"].stringValue
-            print(unitProjects[indexPath.row]["project"]["name"].stringValue)
             if let finalmrk = unitProjects[indexPath.row]["final_mark"].int{
                 if finalmrk >= 60{
                     cell.finalMark.textColor = hexStringToUIColor(hexString: "#009929")
@@ -105,12 +109,28 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
                     cell.finalMark.textColor = UIColor.red
                     cell.finalMark.text = "👎" + String(finalmrk)
                 }
-                
             }
             else{
-                if personData.projects[indexPath.row]["status"].string == "in_progress"{
+                if unitProjects[indexPath.row]["status"].stringValue == "in_progress"{
                     cell.finalMark.text = "🕐"
                 }
+            }
+            return cell
+        }
+        else if tableView == piscineTableView{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "piscineCell", for: indexPath) as! PiscineCell
+            cell.nameDay.textColor = hexStringToUIColor(hexString: "#009999")
+            cell.nameDay.text = piscineDays[indexPath.row]["project"]["slug"].stringValue
+            if let mrkDay = piscineDays[indexPath.row]["final_mark"].int{
+                if mrkDay >= 27{
+                    cell.markDay.textColor = hexStringToUIColor(hexString: "#009929")
+                    cell.markDay.text = "👍" + String(mrkDay)
+                }
+                else{
+                    cell.markDay.textColor = UIColor.red
+                    cell.markDay.text = "👎" + String(mrkDay)
+                }
+                
             }
             return cell
         }
@@ -130,6 +150,9 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
         projectTableView.dataSource = self
         projectTableView.allowsSelection = false
         skillTableView.allowsSelection = false
+        piscineTableView.dataSource = self
+        piscineTableView.delegate = self
+
         setImages()
         setSkillView()
         fetchSkillData()
@@ -137,8 +160,6 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
     }
     
     func fetchProjectData(){
-
-       
         for item in personData.projects{
             var nameProject: String = ""
             if item["cursus_ids"][0] == 1{
@@ -146,11 +167,9 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
                 unitProjects.append(item)
             }
             else if item["cursus_ids"][0] == 4{
-                nameProject = item["project"]["slug"].stringValue
-                piscineDay.append(item)
+                nameProject = item["project"].stringValue
+                piscineDays.append(item)
             }
-
-
         }
     }
     
@@ -257,6 +276,11 @@ class ProjectCell: UITableViewCell{
     @IBOutlet weak var finalMark: UILabel!
 }
 
+class PiscineCell: UITableViewCell{
+    @IBOutlet weak var nameDay: UILabel!
+    @IBOutlet weak var markDay: UILabel!
+    
+}
 
 
 
