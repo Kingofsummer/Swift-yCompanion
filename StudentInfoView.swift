@@ -54,11 +54,8 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
     var nameSkillArr = [String]()
     var levelSkillArr = [String]()
     
-    var nameProjectArr = [String]()
-    var finalMarkArr = [String]()
-    
- 
-    
+    var piscineDay: [JSON] = []
+    var unitProjects: [JSON] = []
    
     
 
@@ -74,7 +71,8 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
 
         }
         else if tableView == projectTableView{
-            returnValue = nameProjectArr.count
+            returnValue = unitProjects.count
+           print(unitProjects)
         }
         return returnValue
     }
@@ -96,9 +94,9 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
             let cell = tableView.dequeueReusableCell(withIdentifier: "projectCell",  for: indexPath) as! ProjectCell
             cell.nameProject.textColor = hexStringToUIColor(hexString: "#009999")
             
-            cell.nameProject.text = nameProjectArr[indexPath.row]
-            
-            if let finalmrk = personData.projects[indexPath.row]["final_mark"].int{
+            cell.nameProject.text = unitProjects[indexPath.row]["project"]["name"].stringValue
+            print(unitProjects[indexPath.row]["project"]["name"].stringValue)
+            if let finalmrk = unitProjects[indexPath.row]["final_mark"].int{
                 if finalmrk >= 60{
                     cell.finalMark.textColor = hexStringToUIColor(hexString: "#009929")
                     cell.finalMark.text = "👍" + String(finalmrk)
@@ -139,19 +137,19 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
     }
     
     func fetchProjectData(){
-        nameProjectArr.removeAll()
-        finalMarkArr.removeAll()
-        
+
+       
         for item in personData.projects{
             var nameProject: String = ""
             if item["cursus_ids"][0] == 1{
-                nameProject = item["project"]["name"].stringValue
+                nameProject = item["project"].stringValue
+                unitProjects.append(item)
             }
             else if item["cursus_ids"][0] == 4{
                 nameProject = item["project"]["slug"].stringValue
+                piscineDay.append(item)
             }
 
-            nameProjectArr.append(nameProject)
 
         }
     }
