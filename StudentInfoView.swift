@@ -219,6 +219,7 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
             locations.text = personData.locationAvail
         }
         else{
+            personData.check = 0
             locations.text = personData.locationUnaval
         }
         campus.text = personData.campus
