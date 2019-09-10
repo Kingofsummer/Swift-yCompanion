@@ -135,10 +135,16 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
         finalMarkArr.removeAll()
         
         for item in personData.projects{
-            let nameProject = item["project"]["name"].stringValue
+            var nameProject: String = ""
+            if item["cursus_ids"][0] == 1{
+                nameProject = item["project"]["name"].stringValue
+            }
+            else if item["cursus_ids"][0] == 4{
+                nameProject = item["project"]["slug"].stringValue
+            }
+
             nameProjectArr.append(nameProject)
-            let finalMark = item["final_mark"].stringValue
-            finalMarkArr.append(finalMark)
+
         }
     }
     
