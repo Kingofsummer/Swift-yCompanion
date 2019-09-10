@@ -64,12 +64,7 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
     @IBAction func sweetHome(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
-    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var returnValue: Int = 1
         if tableView == skillTableView{
@@ -78,29 +73,12 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
         }
         else if tableView == projectTableView{
             returnValue = nameProjectArr.count
-            print("tyt")
         }
         return returnValue
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        switch tableView {
-//        case skillTableView:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "skillCell",  for: indexPath) as! SkillCell
-//            cell.nameSkillLabel.textColor = hexStringToUIColor(hexString: personData.textColor)
-//            cell.levelSkillLabel.textColor = hexStringToUIColor(hexString: personData.textColor)
-//            cell.nameSkillLabel.text = nameSkillArr[indexPath.row]
-//            cell.levelSkillLabel.text = levelSkillArr[indexPath.row]
-//            return cell
-//        case projectTableView:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "projectCell",  for: indexPath) as! ProjectCell
-//            cell.nameProject.textColor = hexStringToUIColor(hexString: personData.textColor)
-//            cell.nameProject.text = nameProjectArr[indexPath.row]
-//            return cell
-//        default:
-//            return UITableViewCell()
-//        }
+
         
         var cell = UITableViewCell()
         
@@ -115,10 +93,23 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
         else if tableView == projectTableView{
             let cell = tableView.dequeueReusableCell(withIdentifier: "projectCell",  for: indexPath) as! ProjectCell
             cell.nameProject.textColor = hexStringToUIColor(hexString: personData.textColor)
+            
             cell.nameProject.text = nameProjectArr[indexPath.row]
+            
+            if let finalmrk = personData.projects[indexPath.row]["final_mark"].int{
+//               print("\(nameProjectArr[indexPath.row]) -- \(finalmrk)")
+                cell.finalMark.text = String(finalmrk)
+            }
+            else{
+                if personData.projects[indexPath.row]["status"].string == "in_progress"{
+                    
+                    cell.finalMark.text = "🕐"
+                }
+            }
             return cell
         }
         else{
+            print("error tableView")
             return cell
         }
 
@@ -126,9 +117,9 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
     }
     
     override func viewDidLoad() {
-        skillTableView.delegate = self
-         projectTableView.delegate = self
         
+        skillTableView.delegate = self
+        projectTableView.delegate = self
         skillTableView.dataSource = self
         projectTableView.dataSource = self
         projectTableView.allowsSelection = false
@@ -146,6 +137,8 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
         for item in personData.projects{
             let nameProject = item["project"]["name"].stringValue
             nameProjectArr.append(nameProject)
+            let finalMark = item["final_mark"].stringValue
+            finalMarkArr.append(finalMark)
         }
     }
     
