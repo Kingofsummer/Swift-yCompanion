@@ -57,6 +57,8 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
     var nameProjectArr = [String]()
     var finalMarkArr = [String]()
     
+ 
+    
    
     
 
@@ -92,17 +94,23 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
         }
         else if tableView == projectTableView{
             let cell = tableView.dequeueReusableCell(withIdentifier: "projectCell",  for: indexPath) as! ProjectCell
-            cell.nameProject.textColor = hexStringToUIColor(hexString: personData.textColor)
+            cell.nameProject.textColor = hexStringToUIColor(hexString: "#009999")
             
             cell.nameProject.text = nameProjectArr[indexPath.row]
             
             if let finalmrk = personData.projects[indexPath.row]["final_mark"].int{
-//               print("\(nameProjectArr[indexPath.row]) -- \(finalmrk)")
-                cell.finalMark.text = String(finalmrk)
+                if finalmrk >= 60{
+                    cell.finalMark.textColor = hexStringToUIColor(hexString: "#009929")
+                    cell.finalMark.text = "👍" + String(finalmrk)
+                    
+                }else{
+                    cell.finalMark.textColor = UIColor.red
+                    cell.finalMark.text = "👎" + String(finalmrk)
+                }
+                
             }
             else{
                 if personData.projects[indexPath.row]["status"].string == "in_progress"{
-                    
                     cell.finalMark.text = "🕐"
                 }
             }
