@@ -48,13 +48,20 @@ class ViewController: UIViewController {
     }
     
     func getStudentData(){
-        personData.check = 1
+        personData.check = 0
         let param: Parameters = ["access_token": token]
         Alamofire.request(urlSearch + "users/" + textField.text!, method: .get, parameters: param).responseJSON { (response) in
             if response.result.isSuccess {
                 let userJson = JSON(response.result.value!)
-                print(userJson)
+//                print(userJson)
                 self.parseData(userJson: userJson)
+            }
+            else{
+                let alert = UIAlertController(title: "Wrong login", message: "User \(self.textField.text!) not found",preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                self.textField.text = ""
+                self.searhButton.isEnabled = true
             }
         }
     }
@@ -102,10 +109,13 @@ class ViewController: UIViewController {
         }
         if let locations = userJson["location"].string{
             personData.locationAvail = "Available \(locations)"
+            print("tyt a")
         }
         else{
-            personData.locationUnaval = "Unvailable"
+            print("tyt u")
             personData.check = 1
+            personData.locationUnaval = "Unvailable"
+          
         }
         if let campus = userJson["campus"][0]["city"].string{
             personData.campus = campus
@@ -129,17 +139,8 @@ class ViewController: UIViewController {
                 self.personData.textColor = coalitionData[0]["color"].stringValue
                  self.performSegue(withIdentifier: "studentInfoView", sender: nil)
             }
-            else{
-                
-                print("ERRRRRRRROOOOOOOOOOORRRRRRRRRRR")
-            }
-
         }
-        
-        
-        
-        
-        
+
     }
     
     func getToken() {

@@ -215,6 +215,7 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
         g.textColor = hexStringToUIColor(hexString: personData.textColor)
         g.text = String(personData.grade)
         
+        
         if personData.check == 0{
             locations.text = personData.locationAvail
         }
@@ -223,7 +224,6 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
             locations.text = personData.locationUnaval
         }
         campus.text = personData.campus
-        
     }
     
     
