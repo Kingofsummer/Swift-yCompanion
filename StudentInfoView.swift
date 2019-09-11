@@ -104,7 +104,7 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
             cell.nameProject.text = unitProjects[indexPath.row]["project"]["name"].string
             
             if let finalmrk = unitProjects[indexPath.row]["final_mark"].int{
-                print("\(unitProjects[indexPath.row]["project"]["name"].stringValue) -- \(unitProjects[indexPath.row]["final_mark"]).int")
+//                print("\(unitProjects[indexPath.row]["project"]["name"].stringValue) -- \(unitProjects[indexPath.row]["final_mark"]).int")
                 if finalmrk >= 60{
                     cell.finalMark.textColor = hexStringToUIColor(hexString: "#009929")
                     cell.finalMark.text = "👍" + String(finalmrk)
@@ -126,7 +126,7 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
             let cell = tableView.dequeueReusableCell(withIdentifier: "piscineCell", for: indexPath) as! PiscineCell
             cell.nameDay.textColor = hexStringToUIColor(hexString: "#009999")
             cell.nameDay.text = piscineDays[indexPath.row]["project"]["slug"].string
-            print()
+//            print()
             if let mrkDay = piscineDays[indexPath.row]["final_mark"].int{
                 if mrkDay >= 27{
                     cell.markDay.textColor = hexStringToUIColor(hexString: "#009929")
@@ -179,7 +179,7 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
                 nameProject = item["project"].stringValue
                 piscineDays.append(item)
             }
-            print(unitProjects)
+//            print(unitProjects)
         }
     }
     

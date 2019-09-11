@@ -37,11 +37,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func searchButton(_ sender: UIButton) {
-        print("!!!!!!!!!!!!buttonPressed!!!!!!!!!!!!!!!!!!!!!!!!")
         searhButton.isEnabled = false
         getStudentData()
-     
-       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,21 +48,22 @@ class ViewController: UIViewController {
     }
     
     func getStudentData(){
+        personData.check = 1
         let param: Parameters = ["access_token": token]
         Alamofire.request(urlSearch + "users/" + textField.text!, method: .get, parameters: param).responseJSON { (response) in
             if response.result.isSuccess {
                 let userJson = JSON(response.result.value!)
-//                print(userJson)
+                print(userJson)
                 self.parseData(userJson: userJson)
-               
-             
             }
         }
     }
     
     func parseData(userJson: JSON){
-        personData.image_url = userJson["image_url"].stringValue
-//        print(personData.image_url)
+        if let image = userJson["image_url"].string{
+              personData.image_url = image
+        }
+        
         if let user_id = userJson["id"].int{
             parseCoalition(user_id: user_id)
         }
@@ -77,6 +75,14 @@ class ViewController: UIViewController {
         }
         if let login = userJson["login"].string{
             personData.login = login
+            
+        }
+        else{
+            let alert = UIAlertController(title: "Wrong login", message: "User \(textField.text!) not found",preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            textField.text = ""
+            searhButton.isEnabled = true
         }
         if let level = userJson["cursus_users"][0]["level"].double{
             personData.level = level
@@ -89,6 +95,10 @@ class ViewController: UIViewController {
         }
         if let grade = userJson["cursus_users"][0]["grade"].string{
             personData.grade = grade
+        }
+        else{
+            
+            personData.grade = "no grade"
         }
         if let locations = userJson["location"].string{
             personData.locationAvail = "Available \(locations)"
@@ -114,7 +124,7 @@ class ViewController: UIViewController {
         Alamofire.request(urlSearch + "users/" + "\(user_id)" + "/coalitions" , method: .get, parameters: param).responseJSON { (response) in
             if response.result.isSuccess{
                 let coalitionData = JSON(response.result.value!)
-//                print(coalitionData)
+                
                 self.personData.backgroundColour = coalitionData[0]["cover_url"].stringValue
                 self.personData.textColor = coalitionData[0]["color"].stringValue
                  self.performSegue(withIdentifier: "studentInfoView", sender: nil)

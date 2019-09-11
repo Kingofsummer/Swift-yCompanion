@@ -31,4 +31,5 @@ class PersonData {
     var check: Int = 0
     var campus: String = ""
     var projects: [JSON] = []
+    var hide: Int = 0
 }
