@@ -20,7 +20,7 @@
 /* Begin PBXFileReference section */
 		451F32948880DEB2D74B0F10 /* Pods-Swift yCompanion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift yCompanion.release.xcconfig"; path = "Target Support Files/Pods-Swift yCompanion/Pods-Swift yCompanion.release.xcconfig"; sourceTree = "<group>"; };
 		70A2E4AB63FB34BCCE146DC6 /* Pods_Swift_yCompanion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swift_yCompanion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A85F3E3231FD830005F2492 /* StudentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StudentInfoView.swift; path = ../StudentInfoView.swift; sourceTree = "<group>"; };
+		9A85F3E3231FD830005F2492 /* StudentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoView.swift; sourceTree = "<group>"; };
 		9A98BE71231D22F4007E1CE7 /* Swift yCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift yCompanion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A98BE74231D22F4007E1CE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A98BE76231D22F4007E1CE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,16 +74,40 @@
 		9A98BE73231D22F4007E1CE7 /* Swift yCompanion */ = {
 			isa = PBXGroup;
 			children = (
-				9A85F3E3231FD830005F2492 /* StudentInfoView.swift */,
-				9A98BE74231D22F4007E1CE7 /* AppDelegate.swift */,
-				9A98BE76231D22F4007E1CE7 /* ViewController.swift */,
-				9A98BE86231D25FA007E1CE7 /* DataClass.swift */,
-				9A98BE78231D22F4007E1CE7 /* Main.storyboard */,
+				9AFCAE9F232A34AC0098FA47 /* Controller */,
+				9AFCAE9D232A34740098FA47 /* Model */,
+				9AFCAE9E232A348F0098FA47 /* View */,
 				9A98BE7B231D22F6007E1CE7 /* Assets.xcassets */,
 				9A98BE7D231D22F6007E1CE7 /* LaunchScreen.storyboard */,
 				9A98BE80231D22F6007E1CE7 /* Info.plist */,
 			);
 			path = "Swift yCompanion";
+			sourceTree = "<group>";
+		};
+		9AFCAE9D232A34740098FA47 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9A98BE86231D25FA007E1CE7 /* DataClass.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9AFCAE9E232A348F0098FA47 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A98BE78231D22F4007E1CE7 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9AFCAE9F232A34AC0098FA47 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9A85F3E3231FD830005F2492 /* StudentInfoView.swift */,
+				9A98BE74231D22F4007E1CE7 /* AppDelegate.swift */,
+				9A98BE76231D22F4007E1CE7 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		9FECB06BBE8F7CA8D8EC01D4 /* Frameworks */ = {

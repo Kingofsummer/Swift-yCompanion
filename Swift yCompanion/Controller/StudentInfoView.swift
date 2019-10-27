@@ -15,7 +15,6 @@ class StudentInfoView: UIViewController, UITableViewDelegate,  UITableViewDataSo
 
 
 
-    
     @IBOutlet weak var url: UILabel!
     @IBOutlet weak var studentPhoto: UIImageView!
     @IBOutlet weak var skillView: UIView!
